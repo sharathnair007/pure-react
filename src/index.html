@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- This example is to create a simple react project using vannilaJS and not using the package create-react-app -->
+  <div id="root">React not rendered</div>
+  <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script>
+    const Person = (props) => {
+      return React.createElement("div", {}, [
+        React.createElement("h1", {}, props.name),
+        React.createElement("p", {}, props.occupation),
+      ]);
+    }
+    
+    // using class components
+    class App extends React.Component {
+      render() {
+        return React.createElement("div", {}, [
+          React.createElement("h1", {}, "React is Rendered !!!"),
+          React.createElement(Person, {name: "Sharath", occupation: "Software Developer"}),
+          React.createElement(Person, {name: "Sanjay", occupation: "Corrosion Engineer"}),
+          React.createElement(Person, {name: "Amit", occupation: "Teacher"}),
+        ]);
+      }
+    }
+
+    /*
+    using functional components
+    const App = () => {
+      return React.createElement("div", {}, [
+          React.createElement("h1", {}, "React is Rendered !!!"),
+          React.createElement(Person, {name: "Sharath", occupation: "Software Developer"}),
+          React.createElement(Person, {name: "Sanjay", occupation: "Corrosion Engineer"}),
+          React.createElement(Person, {name: "Amit", occupation: "Teacher"}),
+        ]);
+    };
+    */
+
+    // ReactDOM.render(React.createElement(App), document.getElementById("root"));
+    const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container);
+    root.render(React.createElement(App))
+
+  </script>
+</body>
+</html>
